@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Postres.Infraestructura.HttpService;
 
 namespace Postres.Aplicacion
 {
@@ -18,6 +19,10 @@ namespace Postres.Aplicacion
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            #region INYECCIÓN DE DEPENDENCIAS
+            builder.Services.AddScoped<IHttpConfig, HttpConfig>();
+            #endregion
 
             return builder.Build();
         }

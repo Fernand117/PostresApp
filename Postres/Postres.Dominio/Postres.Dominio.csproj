@@ -24,7 +24,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="DTOs\" />
 	  <Folder Include="Platforms\Android\" />
 	  <Folder Include="Platforms\MacCatalyst\" />
 	  <Folder Include="Platforms\Windows\" />
