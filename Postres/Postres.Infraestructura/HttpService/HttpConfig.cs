@@ -1,4 +1,6 @@
-﻿
+﻿using Newtonsoft.Json;
+using System.Text;
+
 namespace Postres.Infraestructura.HttpService
 {
     public class HttpConfig : IHttpConfig
@@ -10,24 +12,26 @@ namespace Postres.Infraestructura.HttpService
             _httpClient = httpClient ?? throw new ArgumentException(nameof(httpClient));
         }
 
-        public Task<HttpResponseMessage> DeleteAsync(string requestUri)
+        public async Task<HttpResponseMessage> GetAsync(string requestUri)
         {
-            throw new NotImplementedException();
+            return await _httpClient.GetAsync(requestUri);
         }
 
-        public Task<HttpResponseMessage> GetAsync(string requestUri)
+        public async Task<HttpResponseMessage> PostAsync<T>(string requestUri, T content)
         {
-            throw new NotImplementedException();
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+            return await _httpClient.PostAsync(requestUri, jsonContent);
         }
 
-        public Task<HttpResponseMessage> PostAsync<T>(string requestUri, T content)
+        public async Task<HttpResponseMessage> PutAsync<T>(string requestUri, T content)
         {
-            throw new NotImplementedException();
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+            return await _httpClient.PutAsync(requestUri, jsonContent);
         }
 
-        public Task<HttpResponseMessage> PutAsync<T>(string requestUri, T content)
+        public async Task<HttpResponseMessage> DeleteAsync(string requestUri)
         {
-            throw new NotImplementedException();
+            return await _httpClient.DeleteAsync(requestUri);
         }
     }
 }
