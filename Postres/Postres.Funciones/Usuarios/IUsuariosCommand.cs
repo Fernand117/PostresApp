@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Postres.Funciones.Usuarios
+﻿namespace Postres.Funciones.Usuarios
 {
-    internal interface IUsuariosCommand
+    public interface IUsuariosCommand
     {
+        //TODO: Definir el tipo de métodos que se utilizarán junto con el tipo de datos que van a devolver
     }
 }
